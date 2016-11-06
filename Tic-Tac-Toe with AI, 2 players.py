@@ -47,6 +47,67 @@ def turn(pos1, board2, button, a):
     aiturn = win()
 
 
+def aiplay(board2, pos1, a, button, aiturn):
+    """ chose a random number and play it"""
+    pos1 = "".join(random.sample(["0", "1", "2", "3", "4", "5", "6", "7", "8"], 1))
+ 
+    for i in range(len(board2)):
+        for n in range(len(board2[i])):
+            if str(board2[i][n]) == str(pos1):
+                print(str(board2[i][n]), " is the changed value")
+                board2[i][n] = "O"
+                options[str(pos1)]()
+                aiturn = True
+ 
+                return board2, pos1, a, button, aiturn
+    else:
+        # repeat if choice is taken
+        board2, pos1, a, button, aiturn = aiplay(board2, pos1, a, button, aiturn)
+        return board2, pos1, a, button, aiturn
+ 
+ 
+def win():
+    """check win state"""
+    for i in range(3):
+ 
+        if "XXX" == str("".join(board2[i][0:3])) or "XXX" == (board2[0][i] + board2[1][i] + board2[2][i]):
+            reset(1)
+            aiturn = True
+            if player:
+                a[0] = "X"
+            return aiturn
+ 
+    if (board2[0][0] + board2[1][1] + board2[2][2]) == "XXX" or (
+                    board2[0][2] + board2[1][1] + board2[2][0]) == "XXX":
+        reset(1)
+        aiturn = True
+        if player:
+            a[0] = "X"
+        return aiturn
+ 
+    for i in range(3):
+ 
+        if "OOO" == str("".join(board2[i][0:3])) or "OOO" == (board2[0][i] + board2[1][i] + board2[2][i]):
+            reset(2)
+ 
+    if (board2[0][0] + board2[1][1] + board2[2][2]) == "OOO" or (
+                    board2[0][2] + board2[1][1] + board2[2][0]) == "OOO":
+        reset(2)
+ 
+    info = 0
+    for i in range(3):
+        for n in range(3):
+            if board2[i][n] == "X":
+                info += 1
+ 
+            if board2[i][n] == "O":
+                info += 1
+ 
+    if info == 9:
+        reset(0)
+        aiturn = True
+        return aiturn
+
 def reset(n):
     """ win state, reset board """
     if n == 0:
