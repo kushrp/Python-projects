@@ -1,3 +1,4 @@
+@@ -0,0 +1,432 @@
 import random
 import tkinter as tk
 from tkinter import ttk
@@ -135,8 +136,9 @@ def win():
         reset(0)
         aiturn = True
         return aiturn
-
-
+ 
+ 
+ 
 def reset(n):
     """ win state, reset board """
     if n == 0:
@@ -159,7 +161,8 @@ def reset(n):
             numb += 1
  
     return board2
-
+ 
+ 
 def checkatk(board2, aiturn):
     """win the game on the next move"""
     danger = 0
@@ -396,8 +399,7 @@ options = {"0": ch1,
            "7": ch8,
            "8": ch9,
            }
-
-
+ 
 """ *** Layout *** """
  
 button1 = ttk.Button(root, text=" ", command=lambda: turn("0", board2, button1, a))
