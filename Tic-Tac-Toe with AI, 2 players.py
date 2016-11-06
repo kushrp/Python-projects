@@ -160,6 +160,244 @@ def reset(n):
  
     return board2
 
+def checkatk(board2, aiturn):
+    """win the game on the next move"""
+    danger = 0
+    danger2 = 0
+    danger3 = 0
+    danger4 = 0
+ 
+    for n in range(3):
+        for i in range(3):
+            if i == 0:
+                danger = 0
+            if board2[n][i] == "O":
+                danger += 1
+ 
+        if danger == 2:
+            for i in range(3):
+                if board2[n][i] != "O" and board2[n][i] != "X" and not aiturn:
+                    options[board2[n][i]]()
+                    print("Ai played")
+                    board2[n][i] = "O"
+                    danger = 0
+                    aiturn = True
+ 
+        for i in range(3):
+            if i == 0:
+                danger2 = 0
+            if board2[i][n] == "O":
+                danger2 += 1
+ 
+        if danger2 == 2:
+            for i in range(3):
+                if board2[i][n] != "O" and board2[i][n] != "X" and not aiturn:
+                    options[board2[i][n]]()
+                    print("Ai played")
+                    board2[i][n] = "O"
+                    danger2 = 0
+                    aiturn = True
+ 
+    if board2[1][1] == "O":
+        danger3 += 1
+        danger4 += 1
+ 
+    if board2[0][0] == "O":
+        danger3 += 1
+    if board2[2][2] == "O":
+        danger3 += 1
+ 
+    if board2[2][0] == "O":
+        danger4 += 1
+    if board2[0][2] == "O":
+        danger4 += 1
+ 
+    if danger3 == 2 and not aiturn:
+        if board2[0][0] != "O" and board2[0][0] != "X":
+            options[board2[0][0]]()
+            print("Ai played")
+            board2[0][0] = "O"
+            aiturn = True
+ 
+        if board2[1][1] != "O" and board2[1][1] != "X":
+            options[board2[1][1]]()
+            print("Ai played")
+            board2[1][1] = "O"
+            aiturn = True
+ 
+        if board2[2][2] != "O" and board2[2][2] != "X":
+            options[board2[2][2]]()
+            print("Ai played")
+            board2[2][2] = "O"
+            aiturn = True
+ 
+    if danger4 == 2 and not aiturn:
+        if board2[0][2] != "O" and board2[0][2] != "X":
+            options[board2[0][2]]()
+            print("Ai played")
+            board2[0][2] = "O"
+            aiturn = True
+ 
+        if board2[1][1] != "O" and board2[1][1] != "X":
+            options[board2[1][1]]()
+            print("Ai played")
+            board2[1][1] = "O"
+            aiturn = True
+ 
+        if board2[2][0] != "O" and board2[2][0] != "X":
+            options[board2[2][0]]()
+            print("Ai played")
+            board2[2][0] = "O"
+            aiturn = True
+ 
+    return board2, aiturn
+ 
+ 
+def checkdef(board2, aiturn):
+    """block player in the next move"""
+    danger = 0
+    danger2 = 0
+    danger3 = 0
+    danger4 = 0
+ 
+    for n in range(3):
+        for i in range(3):
+            if i == 0:
+                danger = 0
+            if board2[n][i] == "X":
+                danger += 1
+ 
+        if danger == 2:
+            for i in range(3):
+                if board2[n][i] != "O" and board2[n][i] != "X" and not aiturn:
+                    options[board2[n][i]]()
+                    print("Ai played")
+                    board2[n][i] = "O"
+                    danger = 0
+                    aiturn = True
+ 
+        for i in range(3):
+            if i == 0:
+                danger2 = 0
+            if board2[i][n] == "X":
+                danger2 += 1
+ 
+        if danger2 == 2:
+            for i in range(3):
+                if board2[i][n] != "O" and board2[i][n] != "X" and not aiturn:
+                    options[board2[i][n]]()
+                    print("Ai played")
+                    board2[i][n] = "O"
+                    danger2 = 0
+                    aiturn = True
+ 
+    if board2[1][1] == "X":
+        danger3 += 1
+        danger4 += 1
+ 
+    if board2[0][0] == "X":
+        danger3 += 1
+    if board2[2][2] == "X":
+        danger3 += 1
+ 
+    if board2[2][0] == "X":
+        danger4 += 1
+    if board2[0][2] == "X":
+        danger4 += 1
+ 
+    if danger3 == 2 and not aiturn:
+        if board2[0][0] != "O" and board2[0][0] != "X":
+            options[board2[0][0]]()
+            print("Ai played")
+            board2[0][0] = "O"
+            aiturn = True
+ 
+        if board2[1][1] != "O" and board2[1][1] != "X":
+            options[board2[1][1]]()
+            print("Ai played")
+            board2[1][1] = "O"
+            aiturn = True
+ 
+        if board2[2][2] != "O" and board2[2][2] != "X":
+            options[board2[2][2]]()
+            print("Ai played")
+            board2[2][2] = "O"
+            aiturn = True
+ 
+    if danger4 == 2 and not aiturn:
+        if board2[0][2] != "O" and board2[0][2] != "X":
+            options[board2[0][2]]()
+            print("Ai played")
+            board2[0][2] = "O"
+            aiturn = True
+ 
+        if board2[1][1] != "O" and board2[1][1] != "X":
+            options[board2[1][1]]()
+            print("Ai played")
+            board2[1][1] = "O"
+            aiturn = True
+ 
+        if board2[2][0] != "O" and board2[2][0] != "X":
+            options[board2[2][0]]()
+            print("Ai played")
+            board2[2][0] = "O"
+            aiturn = True
+ 
+    return board2, aiturn
+ 
+ 
+# functions to change the buttons the ai chose
+ 
+def ch1():
+    button1["text"] = "O"
+ 
+ 
+def ch2():
+    button2["text"] = "O"
+ 
+ 
+def ch3():
+    button3["text"] = "O"
+ 
+ 
+def ch4():
+    button4["text"] = "O"
+ 
+ 
+def ch5():
+    button5["text"] = "O"
+ 
+ 
+def ch6():
+    button6["text"] = "O"
+ 
+ 
+def ch7():
+    button7["text"] = "O"
+ 
+ 
+def ch8():
+    button8["text"] = "O"
+ 
+ 
+def ch9():
+    button9["text"] = "O"
+ 
+ 
+# dictionary
+ 
+options = {"0": ch1,
+           "1": ch2,
+           "2": ch3,
+           "3": ch4,
+           "4": ch5,
+           "5": ch6,
+           "6": ch7,
+           "7": ch8,
+           "8": ch9,
+           }
+
+
 """ *** Layout *** """
  
 button1 = ttk.Button(root, text=" ", command=lambda: turn("0", board2, button1, a))
