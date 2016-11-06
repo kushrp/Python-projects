@@ -1,19 +1,22 @@
 def lex(s):
     mylist = list(s)
-    previ = len(mylist) - 1
     flag = 0
-    for x in range(len(mylist) - 1, -1, -1):
-        s = mylist[previ]
-        q = mylist[x]
-        if mylist[previ] > mylist[x]:
+    x = 0
+    for x in range(len(mylist) - 2, -1, -1):
+        if mylist[x+1] > mylist[x]:
+            min = 'z'
+            ind = 0
+            for index, z in enumerate(mylist[x+1:]):
+                if mylist[x] < z <= min:
+                    min = z
+                    ind = x + 1 + index
+
             temp = mylist[x]
-            mylist[x] = mylist[previ]
-            mylist[previ] = temp
+            mylist[x] = mylist[ind]
+            mylist[ind] = temp
             flag = 1
-            mylist[x+1:len(mylist)-1] = sorted(mylist[x+1:len(mylist)-1])
+            mylist[x+1:] = sorted(mylist[x+1:])
             break
-        else :
-            previ = x
     if x is 0 and flag == 0:
         return "no answer"
     else:
