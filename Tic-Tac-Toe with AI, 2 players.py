@@ -45,10 +45,36 @@ def turn(pos1, board2, button, a):
  
     # check win state
     aiturn = win()
-    
+ 
+    # Ai
+ 
+    if not player:
+ 
+        print("fired ai")
+ 
+        if not aiturn:
+            board2, aiturn = checkatk(board2, aiturn)
+            print("ai turn for atk is ", aiturn)
+ 
+        if not aiturn:
+            board2, aiturn = checkdef(board2, aiturn)
+            print("ai turn for def is ", aiturn)
+ 
+        if not aiturn:
+            board2, pos1, a, button, aiturn = aiplay(board2, pos1, a, button, aiturn)
+            print("ai turn for random is ", aiturn)
+ 
+    # aiturn = False
+ 
+    for i in range(3):
+        print(board2[i][0], board2[i][1], board2[i][2])
+ 
+    # check win state
+    aiturn = win()
+ 
     return board2, pos1, button, a, aiturn
-
-
+ 
+ 
 def aiplay(board2, pos1, a, button, aiturn):
     """ chose a random number and play it"""
     pos1 = "".join(random.sample(["0", "1", "2", "3", "4", "5", "6", "7", "8"], 1))
@@ -109,6 +135,7 @@ def win():
         reset(0)
         aiturn = True
         return aiturn
+
 
 def reset(n):
     """ win state, reset board """
