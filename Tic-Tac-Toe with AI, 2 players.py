@@ -45,6 +45,8 @@ def turn(pos1, board2, button, a):
  
     # check win state
     aiturn = win()
+    
+    return board2, pos1, button, a, aiturn
 
 
 def aiplay(board2, pos1, a, button, aiturn):
