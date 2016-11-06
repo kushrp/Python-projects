@@ -46,6 +46,30 @@ def turn(pos1, board2, button, a):
     # check win state
     aiturn = win()
 
+
+def reset(n):
+    """ win state, reset board """
+    if n == 0:
+        tkinter.messagebox.showinfo('No one won', 'No one won, restarting')
+    else:
+        tkinter.messagebox.showinfo('There is a winner!', 'Player ' + str(n) + ' is the winner!')
+    numb = 0
+    button1["text"] = " "
+    button2["text"] = " "
+    button3["text"] = " "
+    button4["text"] = " "
+    button5["text"] = " "
+    button6["text"] = " "
+    button7["text"] = " "
+    button8["text"] = " "
+    button9["text"] = " "
+    for i in range(len(board2)):
+        for n in range(len(board2[i])):
+            board2[i][n] = str(numb)
+            numb += 1
+ 
+    return board2
+
 """ *** Layout *** """
  
 button1 = ttk.Button(root, text=" ", command=lambda: turn("0", board2, button1, a))
